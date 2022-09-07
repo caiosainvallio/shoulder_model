@@ -4,51 +4,51 @@ import numpy as np
 import pycaret.classification as caret
 
 
-st.title('Shoulder disability prediction')
-st.write('When rotator cuff repair may not be indicated: Machine Learning can Predict Non-Achievement of Clinically Significant Outcomes After Rotator Cuff Surgical Repair')
+st.title('When rotator cuff repair may not be indicated: Machine Learning can Predict Non-Achievement of Clinically Significant Outcomes After Rotator Cuff Surgical Repair')
+st.write('Probability of Non-Archivement of Clinical Significant Outcomes After Rotator Cuff Surgical Repair')
 
 
 # aba lateral
-st.sidebar.title('Preditores')
+st.sidebar.title('Predictors')
 
 ## features
 
 
 # Idade
 # anos
-idade = st.sidebar.slider(label='Idade', min_value=30, max_value=78, value=56)
+idade = st.sidebar.slider(label='Age (years)', min_value=30, max_value=78, value=56)
 
 # Sexo
 # 0 = mulher; 1 = homem 
-homen = st.sidebar.radio(label='Sexo', options=('Homem', 'Mulher'), horizontal=True)
-if homen == 'Homem':
+homen = st.sidebar.radio(label='Biological Sex', options=('Male', 'Female'), horizontal=True)
+if homen == 'Male':
     homen = 1
 else:
     homen = 0
 
 # Diabete
 # 0 = ausência de diabetes; 1 = presença de Diabetes
-diabetes = st.sidebar.radio(label='Diabete', options=('Presença de Diabetes', 'Ausência de diabetes'))
-if diabetes == 'Presença de Diabetes':
+diabetes = st.sidebar.radio(label='Diabetes', options=('Yes', 'No'), horizontal=True)
+if diabetes == 'Yes':
     diabetes = 1
 else:
     diabetes = 0
 
 # AR
 # 0 = ausência de Artrite Reumatóide; 1 = presença de Artrite Reumatóide
-ar = st.sidebar.radio(label='Artrite Reumatóide', options=('Presença de Artrite Reumatóide', 'Ausência de Artrite Reumatóide'))
-if ar == 'Presença de Artrite Reumatóide':
+ar = st.sidebar.radio(label='Rheumatoid rthritis', options=('Yes', 'No'), horizontal=True)
+if ar == 'Yes':
     ar = 1
 else:
     ar = 0
 
 # Tabagismo
 # 0 = não tabagista; 1 = ex tabagista; 2 = tabagista
-tabaco = st.sidebar.radio(label='Tabagismo', options=('Tabagista', 'Ex tabagista', 'Não tabagista'))
-if tabaco == 'Tabagista':
+tabaco = st.sidebar.radio(label='Smoking', options=('Current Smoker', 'Past Smoker', 'Non Smoker'))
+if tabaco == 'Current Smoker':
     ex_tabagista = 0
     tabagista = 1
-elif tabaco == 'Ex tabagista':
+elif tabaco == 'Past Smoker':
     ex_tabagista = 1
     tabagista = 0
 else:
@@ -57,35 +57,35 @@ else:
 
 # Trauma
 # 0 = ausência de trumas prévios; 1 = presença de trumas prévios
-trauma = st.sidebar.radio(label='Trauma', options=('Presença de trumas prévios', 'Ausência de trumas prévios'), horizontal=True)
-if trauma == 'Presença de trumas prévios':
+trauma = st.sidebar.radio(label='Previous Trauma', options=('Yes', 'No'), horizontal=True)
+if trauma == 'Yes':
     trauma = 1
 else:
     trauma = 0
 
 # Trabalhista
 # 0 = ausência de problemas trabalhistas; 1 = presença de problemas trabalhistas
-trabalhista = st.sidebar.radio(label='Trabalhista', options=('Presença de problemas trabalhistas', 'Ausência de problemas trabalhistas'), horizontal=True)
-if trabalhista == 'Presença de problemas trabalhistas':
+trabalhista = st.sidebar.radio(label="worker's Compensation", options=('Yes', 'No'), horizontal=True)
+if trabalhista == 'Yes':
     trabalhista = 1
 else:
     trabalhista = 0
 
 # Infiltracao
 # 0 = sem histótrico de infiltração; 1 = histórico de infiltração
-infiltracao = st.sidebar.radio(label='Infiltração', options=('Histórico de infiltração', 'Sem histótrico de infiltração'))
-if infiltracao == 'Histórico de infiltração':
+infiltracao = st.sidebar.radio(label='Previous Injection with Corticosteroids', options=('Yes', 'No'))
+if infiltracao == 'Yes':
     infiltracao = 1
 else:
     infiltracao = 0
 
 # supra_espessura3
 # 0 = integro; 1 = routura parcial; 2 = transfixante 
-supra_espessura3 = st.sidebar.radio(label='Espessura do supra', options=('Íntegro', 'Routura parcial', 'Transfixante'))
-if supra_espessura3 == 'Transfixante':
+supra_espessura3 = st.sidebar.radio(label='Supraspinatus Thickness', options=('Intact', 'Partial tear', 'Full-thickness tear'))
+if supra_espessura3 == 'Full-thickness tear':
     supra_transfixante = 1
     supra_parcial = 0
-if supra_espessura3 == 'Routura parcial':
+if supra_espessura3 == 'Partial tear':
     supra_transfixante = 0
     supra_parcial = 1
 else:
