@@ -246,7 +246,7 @@ else:
 
 # artrose
 # 0 = ausência de artrose; 1 = presença de artrose
-artrose = st.sidebar.radio(label='Glenohumeral Arthrosis', options=('Yes', 'No'))
+artrose = st.sidebar.radio(label='Glenohumeral Arthrosis', options=('Yes', 'No'), horizontal=True)
 if artrose == 'Yes':
     artrose = 1
 else:
