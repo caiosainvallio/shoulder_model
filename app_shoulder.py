@@ -16,7 +16,7 @@ st.sidebar.title('Predictors')
 
 # Idade
 # anos
-idade = st.sidebar.slider(label='Age (years)', min_value=30, max_value=78, value=56)
+idade = st.sidebar.slider(label='Age (years)', min_value=18, max_value=80, value=56)
 
 # Sexo
 # 0 = mulher; 1 = homem 
@@ -73,7 +73,7 @@ else:
 
 # Infiltracao
 # 0 = sem histótrico de infiltração; 1 = histórico de infiltração
-infiltracao = st.sidebar.radio(label='Previous Injection with Corticosteroids', options=('Yes', 'No'))
+infiltracao = st.sidebar.radio(label='Previous Injection with Corticosteroids', options=('Yes', 'No'), horizontal=True)
 if infiltracao == 'Yes':
     infiltracao = 1
 else:
@@ -94,35 +94,35 @@ else:
 
 # supra_ret2
 # 1 < 3cm; 2 > 3cm
-supra_ret_m3cm = st.sidebar.radio(label='Espessura do supra', options=('< 3cm', '> 3cm'))
-if supra_ret_m3cm == '> 3cm':
-    supra_ret_m3cm = 1
-else:
+supra_ret_m3cm = st.sidebar.radio(label='Supraspinatus Retraction', options=('< 3cm', '≥ 3cm'))
+if supra_ret_m3cm == '< 3cm':
     supra_ret_m3cm = 0
+else:
+    supra_ret_m3cm = 1
 
 # todo_supra
 # 0 = sem acometimento de toda extensão do supra; 1 = acometimento de toda extensão do supra
-todo_supra = st.sidebar.radio(label='Todo supra', options=('Acometimento de toda extensão do supra', 'Sem acometimento de toda extensão do supra'))
-if todo_supra == 'Acometimento de toda extensão do supra':
+todo_supra = st.sidebar.radio(label='Entire Estension of the Supraspinatus Affected', options=('Yes', 'No'), horizontal=True)
+if todo_supra == 'Yes':
     todo_supra = 1
 else:
     todo_supra = 0
 
 # supra_anterior
 #  0 = sem acometimento da porção anterior do supra; 1 = acometimento da porção anterior do supra
-supra_anterior = st.sidebar.radio(label='Todo supra', options=('Acometimento da porção anterior do supra', 'Sem acometimento da porção anterior do supra'))
-if supra_anterior == 'Acometimento da porção anterior do supra':
+supra_anterior = st.sidebar.radio(label='Anterior Portion of the Supraspinatus Affected', options=('Yes', 'No'), horizontal=True)
+if supra_anterior == 'Yes':
     supra_anterior = 1
 else:
     supra_anterior = 0
 
 # fuchs_supra
 # 1 = pouca infiltração gordurosa; 2 = média infiltração gordurosa; 3 = muita infiltração gordurosa
-fuchs_supra = st.sidebar.radio(label='FUCHS Supra', options=('Pouca infiltração gordurosa', 'Média infiltração gordurosa', 'Muita infiltração gordurosa'))
-if fuchs_supra == 'Média infiltração gordurosa':
+fuchs_supra = st.sidebar.radio(label='Fatty Degeneration of the Supraspinatus', options=('Grade 1', 'Grade 2', 'Grade 3'))
+if fuchs_supra == 'Grade 2':
     fucs_supra_media_infiltracao_gordurosa = 1
     fucs_supra_muita_infiltracao_gordurosa = 0
-elif fuchs_supra == 'Muita infiltração gordurosa':
+elif fuchs_supra == 'Grade 3':
     fucs_supra_media_infiltracao_gordurosa = 0
     fucs_supra_muita_infiltracao_gordurosa = 1
 else:
