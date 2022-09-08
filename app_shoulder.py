@@ -311,5 +311,5 @@ else:
 score = np.round(score*100, 2)
 
 st.subheader(f"""
-The probability of this patient do not achieve the ASES minimal clinically important difference as 24 months is of **{score}%**
+The probability of this patient do not achieve the ASES minimal clinically important difference at 24 months is of **{score}%**
 """)
