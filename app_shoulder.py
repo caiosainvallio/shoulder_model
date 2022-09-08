@@ -131,11 +131,11 @@ else:
 
 # infra_espessura
 # 0 = integro; 1 = routura parcial; 2 = transfixante
-infra_espessura = st.sidebar.radio(label='Espessura do infra', options=('Íntegro', 'Routura parcial', 'Transfixante'))
-if infra_espessura == 'Routura parcial':
+infra_espessura = st.sidebar.radio(label='Infraspinatus Thickness', options=('Intact', 'Partial tear', 'Full-thickness tear'))
+if infra_espessura == 'Partial tear':
     infra_parcial = 1
     infra_transfixante = 0
-elif infra_espessura == 'Transfixante':
+elif infra_espessura == 'Full-thickness tear':
     infra_parcial = 0
     infra_transfixante = 1
 else:
@@ -144,19 +144,19 @@ else:
 
 # infra_ret2
 # 1 < 3cm; 2 > 3cm
-infra_ret_m3cm = st.sidebar.radio(label='Espessura do infra', options=('< 3cm', '> 3cm'))
-if infra_ret_m3cm == '> 3cm':
-    infra_ret_m3cm = 1
-else:
+infra_ret_m3cm = st.sidebar.radio(label='Infraspinatus Retraction', options=('< 3cm', '≥ 3cm'))
+if infra_ret_m3cm == '< 3cm':
     infra_ret_m3cm = 0
+else:
+    infra_ret_m3cm = 1
 
 # infra_extensao
 # 0 = íntegro, 1 = porção superior; 2 = todo o tendão
-infra_extensao = st.sidebar.radio(label='Extensão infra', options=('Íntegro', 'Porção superior', 'Todo o tendão'))
-if infra_extensao == 'Porção superior':
+infra_extensao = st.sidebar.radio(label='Extension of the Infraspinatus Affected', options=('Intact', 'Superior portion', 'Entire tendon'))
+if infra_extensao == 'Superior portion':
     infra_extensao_superior = 1
     infra_extensao_todo_tendao = 0
-elif infra_extensao == 'Todo o tendão':
+elif infra_extensao == 'Entire tendon':
     infra_extensao_superior = 1
     infra_extensao_todo_tendao = 0
 else:
@@ -166,11 +166,11 @@ else:
 
 # fuchs_infra
 # 1 = pouca infiltração gordurosa; 2 = média infiltração
-fuchs_infra = st.sidebar.radio(label='FUCHS infra', options=('Pouca infiltração gordurosa', 'Média infiltração gordurosa', 'Muita infiltração gordurosa'))
-if fuchs_infra == 'Média infiltração gordurosa':
+fuchs_infra = st.sidebar.radio(label='Fatty Degeneration of Infraspinatus', options=('Grade 1', 'Grade 2', 'Grade 3'))
+if fuchs_infra == 'Grade 2':
     fucs_infra_media_infiltracao_gordurosa = 1
     fucs_infra_muita_infiltracao_gordurosa = 0
-elif fuchs_infra == 'Muita infiltração gordurosa':
+elif fuchs_infra == 'Grade 3':
     fucs_infra_media_infiltracao_gordurosa = 0
     fucs_infra_muita_infiltracao_gordurosa = 1
 else:
@@ -179,16 +179,16 @@ else:
 
 # sub_extensão4
 # 0 = íntegro, 1 = parcial; 2 = terço superior; 3 = transfixante 2/3 ou todo tendão
-sub_extensão4 = st.sidebar.radio(label='Extensão subescapular', options=('Íntegro', 'Parcial', 'Terço superior', 'Transfixante 2/3 ou todo tendão'))
-if sub_extensão4 == 'Parcial':
+sub_extensão4 = st.sidebar.radio(label='Extension of the Subscapularis Affected', options=('Intact', 'Partial tear of the upper third', 'Full-thickness tear of the upper third', 'Full-thickness tear of the upper two thirds or more'))
+if sub_extensão4 == 'Partial tear of the upper third':
     sub_extensao_parcial = 1
     sub_extensao_terco_superior = 0
     sub_extensao_transfixante = 0
-elif sub_extensão4 == 'Terço superior':
+elif sub_extensão4 == 'Full-thickness tear of the upper third':
     sub_extensao_parcial = 0
     sub_extensao_terco_superior = 1
     sub_extensao_transfixante = 0
-elif sub_extensão4 == 'Transfixante 2/3 ou todo tendão':
+elif sub_extensão4 == 'Full-thickness tear of the upper two thirds or more':
     sub_extensao_parcial = 0
     sub_extensao_terco_superior = 0
     sub_extensao_transfixante = 1
@@ -199,11 +199,11 @@ else:
 
 # fuchs_sub
 # 1 = pouca infiltração gordurosa; 2 = média infiltração
-fuchs_sub = st.sidebar.radio(label='FUCHS subescapular', options=('Pouca infiltração gordurosa', 'Média infiltração gordurosa', 'Muita infiltração gordurosa'))
-if fuchs_sub == 'Média infiltração gordurosa':
+fuchs_sub = st.sidebar.radio(label='Fatty Degeneration of the Subscapularis', options=('Grade 1', 'Grade 2', 'Grade 3'))
+if fuchs_sub == 'Grade 2':
     fucs_sub_media_infiltracao_gordurosa = 1
     fucs_sub_muita_infiltracao_gordurosa = 0
-elif fuchs_sub == 'Muita infiltração gordurosa':
+elif fuchs_sub == 'Grade 3':
     fucs_sub_media_infiltracao_gordurosa = 0
     fucs_sub_muita_infiltracao_gordurosa = 1
 else:
@@ -212,11 +212,11 @@ else:
 
 # biceps_lesao
 # 0 = íntegro, 1 = lesão parcial; 2 = lesão completa
-biceps_lesao = st.sidebar.radio(label='Extensão da lesão do bíceps', options=('Íntegro', 'Lesão parcial', 'Lesão completa'))
-if biceps_lesao == 'Lesão parcial':
+biceps_lesao = st.sidebar.radio(label='Injury of the Long Head of the Biceps', options=('Intact', 'Partial tear', 'Complete tear'))
+if biceps_lesao == 'Partial tear':
     biceps_lesao_parcial = 1
     biceps_lesao_completa = 0
-elif biceps_lesao == 'Lesão completa':
+elif biceps_lesao == 'Complete tear':
     biceps_lesao_parcial = 0
     biceps_lesao_completa = 1
 else:
@@ -225,16 +225,16 @@ else:
 
 # biceps_estabilidade
 # 0 = tópico; 1 - subluxado; 2 = luxado; 3 = roto
-biceps_estabilidade = st.sidebar.radio(label='Estabilidade do bíceps', options=('Tópico', 'Subluxado', 'Luxado', 'Roto'))
-if biceps_estabilidade == 'Subluxado':
+biceps_estabilidade = st.sidebar.radio(label='Instability of the Log Head of the Biceps', options=('Topical', 'Subluxated', 'Dislocated', 'Complete tear'))
+if biceps_estabilidade == 'Subluxated':
     biceps_estabilidade_subluxado = 1
     biceps_estabilidade_luxado = 0
     biceps_estabilidade_roto = 0
-elif biceps_estabilidade == 'Luxado':
+elif biceps_estabilidade == 'Dislocated':
     biceps_estabilidade_subluxado = 0
     biceps_estabilidade_luxado = 1
     biceps_estabilidade_roto = 0
-elif biceps_estabilidade == 'Roto':
+elif biceps_estabilidade == 'Complete tear':
     biceps_estabilidade_subluxado = 0
     biceps_estabilidade_luxado = 0
     biceps_estabilidade_roto = 1
@@ -246,15 +246,15 @@ else:
 
 # artrose
 # 0 = ausência de artrose; 1 = presença de artrose
-artrose = st.sidebar.radio(label='Artrose', options=('Ausência de artrose', 'Presença de artrose'))
-if artrose == 'Ausência de artrose':
-    artrose = 0
-else:
+artrose = st.sidebar.radio(label='Glenohumeral Arthrosis', options=('Yes', 'No'))
+if artrose == 'Yes':
     artrose = 1
+else:
+    artrose = 0
 
 # asespre
 # score pré-operatório 0 = more disability and 100 = less disability
-asespre = st.sidebar.slider(label='ASES pré-operatório', min_value=1, max_value=100, value=42)
+asespre = st.sidebar.slider(label='Preoperative ASES Score', min_value=1, max_value=100, value=42)
 
 
 
@@ -310,6 +310,6 @@ else:
 
 score = np.round(score*100, 2)
 
-diff_prevalencia = score - 17.2
-diff_prevalencia = np.round(diff_prevalencia, 2)
-st.metric('Predição (%)', score, diff_prevalencia)
+st.write(f"""
+The probability of this patient do not achieve the ASES minimal clinically important difference as 24 months is of {score}%
+""")
