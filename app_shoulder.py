@@ -5,7 +5,7 @@ import pycaret.classification as caret
 
 
 st.title('When rotator cuff repair may not be indicated: Machine Learning can Predict Non-Achievement of Clinically Significant Outcomes After Rotator Cuff Surgical Repair')
-st.write('Probability of Non-Archivement of Clinical Significant Outcomes After Rotator Cuff Surgical Repair')
+st.header('Probability of Non-Archivement of Clinical Significant Outcomes After Rotator Cuff Surgical Repair')
 
 
 # aba lateral
