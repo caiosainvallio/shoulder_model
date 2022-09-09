@@ -65,7 +65,7 @@ else:
 
 # Trabalhista
 # 0 = ausência de problemas trabalhistas; 1 = presença de problemas trabalhistas
-trabalhista = st.sidebar.radio(label="worker's Compensation", options=('Yes', 'No'), horizontal=True)
+trabalhista = st.sidebar.radio(label="Worker's Compensation", options=('Yes', 'No'), horizontal=True)
 if trabalhista == 'Yes':
     trabalhista = 1
 else:
@@ -102,7 +102,7 @@ else:
 
 # todo_supra
 # 0 = sem acometimento de toda extensão do supra; 1 = acometimento de toda extensão do supra
-todo_supra = st.sidebar.radio(label='Entire Estension of the Supraspinatus Affected', options=('Yes', 'No'), horizontal=True)
+todo_supra = st.sidebar.radio(label='Entire Extension of the Supraspinatus Affected', options=('Yes', 'No'), horizontal=True)
 if todo_supra == 'Yes':
     todo_supra = 1
 else:
@@ -118,11 +118,11 @@ else:
 
 # fuchs_supra
 # 1 = pouca infiltração gordurosa; 2 = média infiltração gordurosa; 3 = muita infiltração gordurosa
-fuchs_supra = st.sidebar.radio(label='Fatty Degeneration of the Supraspinatus', options=('Grade 1', 'Grade 2', 'Grade 3'))
-if fuchs_supra == 'Grade 2':
+fuchs_supra = st.sidebar.radio(label='Fatty Degeneration of the Supraspinatus', options=('Goutallier 0+1', 'Goutallier 2', 'Goutallier 3+4'))
+if fuchs_supra == 'Goutallier 2':
     fucs_supra_media_infiltracao_gordurosa = 1
     fucs_supra_muita_infiltracao_gordurosa = 0
-elif fuchs_supra == 'Grade 3':
+elif fuchs_supra == 'Goutallier 3+4':
     fucs_supra_media_infiltracao_gordurosa = 0
     fucs_supra_muita_infiltracao_gordurosa = 1
 else:
@@ -166,11 +166,11 @@ else:
 
 # fuchs_infra
 # 1 = pouca infiltração gordurosa; 2 = média infiltração
-fuchs_infra = st.sidebar.radio(label='Fatty Degeneration of Infraspinatus', options=('Grade 1', 'Grade 2', 'Grade 3'))
-if fuchs_infra == 'Grade 2':
+fuchs_infra = st.sidebar.radio(label='Fatty Degeneration of Infraspinatus', options=('Goutallier 0+1', 'Goutallier 2', 'Goutallier 3+4'))
+if fuchs_infra == 'Goutallier 2':
     fucs_infra_media_infiltracao_gordurosa = 1
     fucs_infra_muita_infiltracao_gordurosa = 0
-elif fuchs_infra == 'Grade 3':
+elif fuchs_infra == 'Goutallier 3+4':
     fucs_infra_media_infiltracao_gordurosa = 0
     fucs_infra_muita_infiltracao_gordurosa = 1
 else:
@@ -199,11 +199,11 @@ else:
 
 # fuchs_sub
 # 1 = pouca infiltração gordurosa; 2 = média infiltração
-fuchs_sub = st.sidebar.radio(label='Fatty Degeneration of the Subscapularis', options=('Grade 1', 'Grade 2', 'Grade 3'))
-if fuchs_sub == 'Grade 2':
+fuchs_sub = st.sidebar.radio(label='Fatty Degeneration of the Subscapularis', options=('Goutallier 0+1', 'Goutallier 2', 'Goutallier 3+4'))
+if fuchs_sub == 'Goutallier 2':
     fucs_sub_media_infiltracao_gordurosa = 1
     fucs_sub_muita_infiltracao_gordurosa = 0
-elif fuchs_sub == 'Grade 3':
+elif fuchs_sub == 'Goutallier 3+4':
     fucs_sub_media_infiltracao_gordurosa = 0
     fucs_sub_muita_infiltracao_gordurosa = 1
 else:
