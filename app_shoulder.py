@@ -104,9 +104,9 @@ else:
 # 0 = sem acometimento de toda extensão do supra; 1 = acometimento de toda extensão do supra
 todo_supra = st.sidebar.radio(label='Entire Extension of the Supraspinatus Affected', options=('Yes', 'No'), horizontal=True)
 if todo_supra == 'Yes':
-    todo_supra = 1
-else:
     todo_supra = 0
+else:
+    todo_supra = 1
 
 # supra_anterior
 #  0 = sem acometimento da porção anterior do supra; 1 = acometimento da porção anterior do supra
@@ -299,47 +299,6 @@ df = pd.DataFrame(data={
 
 
 model = caret.load_model('artfacts/modelo_rf_pipeline')
-# model = caret.load_model('artfacts/modelo_lgbm_pipeline')
-
-# new_names = {
-#   'idade': 'Age', 
-#   'homen': 'Biological_Sex_Male', 
-#   'diabetes': 'Diabetes_Yes', 
-#   'ar': 'Rheumatoid_arthritis_Yes', 
-#   'ex_tabagista': 'Past_Smoker', 
-#   'tabagista': 'Current_Smoker',
-#   'trauma': 'Previous_Trauma_Yes', 
-#   'trabalhista': 'Workers_Compensation_Yes', 
-#   'infiltracao': 'Previous_Injection_with_Corticosteroids_Yes', 
-#   'supra_parcial': 'Supraspinatus_Thickness_Partial_tear',
-#   'supra_transfixante': 'Supraspinatus_Thickness_Full_thickness_tear', 
-#   'supra_ret_m3cm': 'Supraspinatus_Retraction_more_3cm', 
-#   'todo_supra': 'Entire_Extension_of_the_Supraspinatus_Affected_Yes', 
-#   'supra_anterior': 'Anterior_Portion_of_the_Supraspinatus_Affected_Yes',
-#   'fucs_supra_media_infiltracao_gordurosa': 'Fatty_Degeneration_of_the_Supraspinatus_Goutallier_2',
-#   'fucs_supra_muita_infiltracao_gordurosa': 'Fatty_Degeneration_of_the_Supraspinatus_Goutallier_3to4', 
-#   'infra_parcial': 'Infraspinatus_Thickness_Partial_tear',
-#   'infra_transfixante': 'Infraspinatus_Thickness_Full_thickness_tear', 
-#   'infra_ret_m3cm': 'Infraspinatus_Retraction_more_3cm', 
-#   'infra_extensao_superior': 'Extension_of_the_Infraspinatus_Affected_Superior_portion',
-#   'infra_extensao_todo_tendao': 'Extension_of_the_Infraspinatus_Affected_Entire_tendon', 
-#   'fucs_infra_media_infiltracao_gordurosa': 'Fatty_Degeneration_of_Infraspinatus_Goutallier_2',
-#   'fucs_infra_muita_infiltracao_gordurosa': 'Fatty_Degeneration_of_Infraspinatus_Goutallier_3to4', 
-#   'sub_extensao_parcial': 'Extension_of_the_Subscapularis_Affected_Partial_tear_of_the_upper_third',
-#   'sub_extensao_terco_superior': 'Extension_of_the_Subscapularis_Affected_Full_thickness_tear_of_the_upper_third', 
-#   'sub_extensao_transfixante': 'Extension_of_the_Subscapularis_Affected_Full_thickness_tear_of_the_upper_two_thirds_or_more',
-#   'fucs_sub_media_infiltracao_gordurosa': 'Fatty_Degeneration_of_the_Subscapularis_Goutallier_2',
-#   'fucs_sub_muita_infiltracao_gordurosa': 'Fatty_Degeneration_of_the_Subscapularis_Goutallier_3to4', 
-#   'biceps_lesao_parcial': 'Injury_of_the_Long_Head_of_the_Biceps_Partial_tear',
-#   'biceps_lesao_completa': 'Injury_of_the_Long_Head_of_the_Biceps_Complete_tear', 
-#   'biceps_estabilidade_subluxado': 'Instability_of_the_Log_Head_of_the_Biceps_Subluxated',
-#   'biceps_estabilidade_luxado': 'Instability_of_the_Log_Head_of_the_Biceps_Dislocated', 
-#   'biceps_estabilidade_roto': 'Instability_of_the_Log_Head_of_the_Biceps_Complete_tear', 
-#   'artrose': 'Glenohumeral_Arthrosis_Yes',
-#   'asespre': 'Preoperative_ASES_Score',
-# }
-
-# df = df.rename(columns=new_names)
 
 predicition = caret.predict_model(model, data=df)
 
