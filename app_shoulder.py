@@ -36,7 +36,7 @@ else:
 
 # AR
 # 0 = ausência de Artrite Reumatóide; 1 = presença de Artrite Reumatóide
-ar = st.sidebar.radio(label='Rheumatoid rthritis', options=('Yes', 'No'), horizontal=True)
+ar = st.sidebar.radio(label='Rheumatoid arthritis', options=('Yes', 'No'), horizontal=True)
 if ar == 'Yes':
     ar = 1
 else:
