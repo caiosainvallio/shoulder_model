@@ -298,7 +298,8 @@ df = pd.DataFrame(data={
 })
 
 
-model = caret.load_model('artfacts/modelo_rf_pipeline')
+# model = caret.load_model('artfacts/modelo_rf_pipeline')
+model = caret.load_model('artfacts/modelo_lgbm_pipeline')
 
 
 predicition = caret.predict_model(model, data=df)
