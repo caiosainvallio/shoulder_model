@@ -257,55 +257,56 @@ else:
 asespre = st.sidebar.slider(label='Preoperative ASES Score', min_value=1, max_value=100, value=42)
 
 
-
 # dataframe to predict
 df = pd.DataFrame(data={
-    'idade': [idade],
-    'homen': [homen],
-    'diabetes': [diabetes],
-    'ar': [ar],
-    'ex_tabagista': [ex_tabagista],
-    'tabagista': [tabagista],
-    'trauma': [trauma],
-    'trabalhista': [trabalhista],
-    'infiltracao': [infiltracao],
-    'supra_transfixante': [supra_transfixante],
-    'supra_parcial': [supra_parcial],
-    'supra_ret_m3cm': [supra_ret_m3cm],
-    'todo_supra': [todo_supra],
-    'supra_anterior': [supra_anterior],
-    'fucs_supra_media_infiltracao_gordurosa': [fucs_supra_media_infiltracao_gordurosa],
-    'fucs_supra_muita_infiltracao_gordurosa': [fucs_supra_muita_infiltracao_gordurosa],
-    'infra_parcial': [infra_parcial],
-    'infra_transfixante': [infra_transfixante],
-    'infra_ret_m3cm': [infra_ret_m3cm],
-    'infra_extensao_superior': [infra_extensao_superior],
-    'infra_extensao_todo_tendao': [infra_extensao_todo_tendao],
-    'fucs_infra_media_infiltracao_gordurosa': [fucs_infra_media_infiltracao_gordurosa],
-    'fucs_infra_muita_infiltracao_gordurosa': [fucs_infra_muita_infiltracao_gordurosa],
-    'sub_extensao_parcial': [sub_extensao_parcial],
-    'sub_extensao_terco_superior': [sub_extensao_terco_superior],
-    'sub_extensao_transfixante': [sub_extensao_transfixante],
-    'fucs_sub_media_infiltracao_gordurosa': [fucs_sub_media_infiltracao_gordurosa],
-    'fucs_sub_muita_infiltracao_gordurosa': [fucs_sub_muita_infiltracao_gordurosa],
-    'biceps_lesao_parcial': [biceps_lesao_parcial],
-    'biceps_lesao_completa': [biceps_lesao_completa],
-    'biceps_estabilidade_subluxado': [biceps_estabilidade_subluxado],
-    'biceps_estabilidade_luxado': [biceps_estabilidade_luxado],
-    'biceps_estabilidade_roto': [biceps_estabilidade_roto],
-    'artrose': [artrose],
-    'asespre': [asespre]
+    'Age': [idade],
+    'Biological_Sex_Male': [homen],
+    'Diabetes_Yes': [diabetes],
+    'Rheumatoid_arthritis_Yes': [ar],
+    'Past_Smoker': [ex_tabagista],
+    'Current_Smoker': [tabagista],
+    'Previous_Trauma_Yes': [trauma],
+    'Workers_Compensation_Yes': [trabalhista],
+    'Previous_Injection_with_Corticosteroids_Yes': [infiltracao],
+    'Supraspinatus_Thickness_Partial_tear': [supra_transfixante],
+    'Supraspinatus_Thickness_Full_thickness_tear': [supra_parcial],
+    'Supraspinatus_Retraction_more_3cm': [supra_ret_m3cm],
+    'Entire_Extension_of_the_Supraspinatus_Affected_Yes': [todo_supra],
+    'Anterior_Portion_of_the_Supraspinatus_Affected_Yes': [supra_anterior],
+    'Fatty_Degeneration_of_the_Supraspinatus_Goutallier_2': [fucs_supra_media_infiltracao_gordurosa],
+    'Fatty_Degeneration_of_the_Supraspinatus_Goutallier_3to4': [fucs_supra_muita_infiltracao_gordurosa],
+    'Infraspinatus_Thickness_Partial_tear': [infra_parcial],
+    'Infraspinatus_Thickness_Full_thickness_tear': [infra_transfixante],
+    'Infraspinatus_Retraction_more_3cm': [infra_ret_m3cm],
+    'Extension_of_the_Infraspinatus_Affected_Superior_portion': [infra_extensao_superior],
+    'Extension_of_the_Infraspinatus_Affected_Entire_tendon': [infra_extensao_todo_tendao],
+    'Fatty_Degeneration_of_Infraspinatus_Goutallier_2': [fucs_infra_media_infiltracao_gordurosa],
+    'Fatty_Degeneration_of_Infraspinatus_Goutallier_3to4': [fucs_infra_muita_infiltracao_gordurosa],
+    'Extension_of_the_Subscapularis_Affected_Partial_tear_of_the_upper_third': [sub_extensao_parcial],
+    'Extension_of_the_Subscapularis_Affected_Full_thickness_tear_of_the_upper_third': [sub_extensao_terco_superior],
+    'Extension_of_the_Subscapularis_Affected_Full_thickness_tear_of_the_upper_two_thirds_or_more': [sub_extensao_transfixante],
+    'Fatty_Degeneration_of_the_Subscapularis_Goutallier_2': [fucs_sub_media_infiltracao_gordurosa],
+    'Fatty_Degeneration_of_the_Subscapularis_Goutallier_3to4': [fucs_sub_muita_infiltracao_gordurosa],
+    'Injury_of_the_Long_Head_of_the_Biceps_Partial_tear': [biceps_lesao_parcial],
+    'Injury_of_the_Long_Head_of_the_Biceps_Complete_tear': [biceps_lesao_completa],
+    'Instability_of_the_Log_Head_of_the_Biceps_Subluxated': [biceps_estabilidade_subluxado],
+    'Instability_of_the_Log_Head_of_the_Biceps_Dislocated': [biceps_estabilidade_luxado],
+    'Instability_of_the_Log_Head_of_the_Biceps_Complete_tear': [biceps_estabilidade_roto],
+    'Glenohumeral_Arthrosis_Yes': [artrose],
+    'Preoperative_ASES_Score': [asespre]
 })
+
 
 
 model = caret.load_model('artfacts/modelo_rf_pipeline')
 
 predicition = caret.predict_model(model, data=df)
 
-if predicition.loc[0, 'Label'] == 1:
-    score = predicition.loc[0, 'Score']
+
+if predicition.loc[0, 'prediction_label'] == 1:
+    score = predicition.loc[0, 'prediction_score']
 else:
-    score = 1 - predicition.loc[0, 'Score']
+    score = 1 - predicition.loc[0, 'prediction_score']
 
 score = np.round(score*100, 2)
 
